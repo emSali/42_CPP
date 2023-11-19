@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:48:20 by esali             #+#    #+#             */
-/*   Updated: 2023/11/19 11:11:57 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/19 12:46:37 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,49 +20,39 @@ PhoneBook::~PhoneBook( void ) {
 	return;
 }
 
-void	PhoneBook::add( void ) {
-	Contact newContact = getNewContact();
+std::string	getDetail( std::string prompt ) {
 
-	if (this->contacts )
-	{
+	std::string answer;
 
+	while (answer.empty()) {
+		std::cout << prompt;
+		std::cin >> answer;
 	}
+	return (answer);
+}
+
+void	PhoneBook::add( void ) {
+
+	static int	i = 0;
+
+	this->contacts[i % 8].index = i + 1;
+	this->contacts[i % 8].firstName = getDetail("First name: ");
+	this->contacts[i % 8].lastName = getDetail("Last name: ");
+	this->contacts[i % 8].nickName = getDetail("Nickname: ");
+	this->contacts[i % 8].phone = getDetail("Phone number: ");
+	this->contacts[i % 8].secret = getDetail("Darkest Secret: ");
+	i++;
 	return;
 }
+
 
 void	PhoneBook::search( void ) const {
 
+	if (this->contacts[0].index == 0) {
+		std::cout << "There are no contacts to show" << std::endl;
+		return;
+	}
+
 	return;
 }
 
-Contact	getNewContact( void ) {
-
-	std::string firstName;
-	std::string	lastName;
-	std::string	nickName;
-	std::string	phone;
-	std::string	secret;
-
-	while (firstName.empty()) {
-		std::cout << "First Name: ";
-		std::cin >> firstName;
-	}
-	while (lastName.empty()) {
-		std::cout << "Last Name: ";
-		std::cin >> lastName;
-	}
-	while (nickName.empty()) {
-		std::cout << "Nickname: ";
-		std::cin >> nickName;
-	}
-	while (phone.empty()) {
-		std::cout << "Phone Number: ";
-		std::cin >> phone;
-	}
-	while (secret.empty()) {
-		std::cout << "Darkest Secret: ";
-		std::cin >> secret;
-	}
-	Contact contact = Contact(firstName, lastName, nickName, phone, secret);
-	return (contact);
-}
