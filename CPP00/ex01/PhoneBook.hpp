@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:48:17 by esali             #+#    #+#             */
-/*   Updated: 2023/11/19 12:05:33 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/19 19:40:09 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <cstring>
 #include <cstdlib>
+#include <iomanip>
 #include "Contact.hpp"
 
 
@@ -31,7 +32,7 @@ public:
 
 private:
 
-	Contact contacts[];
+	Contact contacts[8];
 
 };
 
