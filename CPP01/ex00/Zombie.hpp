@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 16:10:03 by esali             #+#    #+#             */
-/*   Updated: 2023/11/22 16:42:10 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/22 17:24:02 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Zombie
 	public:
 		Zombie(std::string name);
 		~Zombie(void);
-		void	announce(void);
+		void	announce(void) const;
 
 	private:
 		std::string _name;
