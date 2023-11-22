@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:43:09 by esali             #+#    #+#             */
-/*   Updated: 2023/11/22 20:46:49 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/22 20:51:15 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	writeFile(char *filename, std::string content){
 }
 
 int main(int argc, char **argv) {
-	//std::ofstream	ofs;
 	std::string		content;
 
 	if (argc != 4){
