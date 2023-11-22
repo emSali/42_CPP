@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 16:48:20 by esali             #+#    #+#             */
-/*   Updated: 2023/11/10 17:00:52 by esali            ###   ########.fr       */
+/*   Created: 2023/11/22 16:14:26 by esali             #+#    #+#             */
+/*   Updated: 2023/11/22 16:14:42 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "Zombie.hpp"
 
-PhoneBook::PhoneBook( void )
+Zombie*	newZombie(std::string name)
 {
-
-	return;
-}
-
-PhoneBook::~PhoneBook( void )
-{
-
-	return;
+	Zombie*	zombie = new Zombie(name);
+	return (zombie);
 }

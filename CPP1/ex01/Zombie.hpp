@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 16:48:17 by esali             #+#    #+#             */
-/*   Updated: 2023/11/10 17:00:01 by esali            ###   ########.fr       */
+/*   Created: 2023/11/22 16:10:03 by esali             #+#    #+#             */
+/*   Updated: 2023/11/22 16:41:47 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef ZOMBIE_H
+# define ZOMBIE_H
 
 #include <iostream>
+#include <string>
 
-class PhoneBook {
-
-
+class Zombie
+{
 	public:
-		PhoneBook(void);
-		~PhoneBook(void);
+		Zombie(void);
+		~Zombie(void);
+		void	announce(void);
+		void	setName(std::string name);
+
+	private:
+		std::string _name;
 };
+
+Zombie* zombieHorde( int N, std::string name );
 
 #endif

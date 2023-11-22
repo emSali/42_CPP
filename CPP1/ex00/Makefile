@@ -1,5 +1,5 @@
-NAME 			= megaphone
-SRCS 			= megaphone.cpp
+NAME 			= zombie
+SRCS 			= Zombie.cpp newZombie.cpp randomChump.cpp main.cpp
 OBJS 			= $(SRCS:.cpp=.o)
 RM				= rm -f
 FLAGS			= -Wall -Wextra -Werror -std=c++98

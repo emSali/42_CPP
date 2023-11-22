@@ -1,5 +1,5 @@
-NAME 			= megaphone
-SRCS 			= phonebook.cpp phonebook.hpp
+NAME 			= zombie
+SRCS 			= Zombie.cpp zombieHorde.cpp main.cpp
 OBJS 			= $(SRCS:.cpp=.o)
 RM				= rm -f
 FLAGS			= -Wall -Wextra -Werror -std=c++98
