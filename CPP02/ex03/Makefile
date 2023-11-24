@@ -1,5 +1,5 @@
 NAME 			= ocf
-SRCS 			= main.cpp Fixed.cpp
+SRCS 			= main.cpp Fixed.cpp Point.cpp
 OBJS 			= $(SRCS:.cpp=.o)
 RM				= rm -f
 FLAGS			= -Wall -Wextra -Werror -std=c++98
