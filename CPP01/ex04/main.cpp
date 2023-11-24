@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:43:09 by esali             #+#    #+#             */
-/*   Updated: 2023/11/22 20:51:15 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/24 18:25:37 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 std::string	replace(std::string content, std::string s1, std::string s2){
 	if(s1.empty()) {
-		std::cout << "The second argument can not be empty" << std::endl;
-		return (NULL);
+		std::cout << "The second argument cannot be empty" << std::endl;
+		return ("");
 	}
 	for (unsigned long i = 0; i < content.length(); i++){
 		if (content[i] == s1[0]){
@@ -37,7 +37,7 @@ std::string	openFile(std::string filename){
 	ifs.open(filename);
 	if (!ifs.is_open()){
 		std::cout << "Error opening file" << std::endl;
-		return (NULL);
+		return ("");
 	}
 	while (std::getline(ifs, line)){
 		content += line + "\n";
