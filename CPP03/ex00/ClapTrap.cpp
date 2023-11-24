@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:24:07 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 14:13:46 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/24 16:34:48 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,49 +96,15 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		std::cout << "ClapTrap " << this->_name << " takes no healing" << std::endl;
 		return;
 	}
-	else if ((amount + this->_hitPoints) > 10)
+	else if ((amount + this->_hitPoints) >= 10)
 	{
 		std::cout << "ClapTrap " << this->_name << " is fully healed" << std::endl;
 		this->_hitPoints = 10;
-		return;
 	}
-	std::cout << "ClapTrap " << this->_name << " is healed for " << amount << " points" << std::endl;
-	this->_hitPoints += amount;
-	return;
-}
-
-std::string ClapTrap::getName(void) const {
-	return (this->_name);
-}
-
-int ClapTrap::getHitPoints(void) const {
-	return (this->_hitPoints);
-}
-
-int ClapTrap::getEnergyPoints(void) const {
-	return (this->_energyPoints);
-}
-
-int ClapTrap::getAttackDamage(void) const {
-	return (this->_attackDamage);
-}
-
-void ClapTrap::setName(std::string name) {
-	this->_name = name;
-	return;
-}
-
-void ClapTrap::setHitPoints(int hitPoints) {
-	this->_hitPoints = hitPoints;
-	return;
-}
-
-void ClapTrap::setEnergyPoints(int energyPoints) {
-	this->_energyPoints = energyPoints;
-	return;
-}
-
-void ClapTrap::setAttackDamage(int attackDamage) {
-	this->_attackDamage = attackDamage;
+	else {
+		std::cout << "ClapTrap " << this->_name << " is healed for " << amount << " points" << std::endl;
+		this->_hitPoints += amount;
+	}
+	this->_energyPoints -= 1;
 	return;
 }
