@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:06:03 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 22:06:32 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/24 22:22:39 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Dog::~Dog(void) {
 }
 
 Dog &Dog::operator=(const Dog &src) {
-	std::cout << "Dog assignation operator called" << std::endl;
+	std::cout << "Dog assignment operator called" << std::endl;
 	this->type = src.getType();
 	return (*this);
 }
