@@ -6,52 +6,59 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:43:09 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 18:25:37 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/24 18:32:52 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filestream.hpp"
 
-std::string	replace(std::string content, std::string s1, std::string s2){
-	if(s1.empty()) {
+std::string replace(std::string content, std::string s1, std::string s2)
+{
+	if (s1.empty())
+	{
 		std::cout << "The second argument cannot be empty" << std::endl;
 		return ("");
 	}
-	for (unsigned long i = 0; i < content.length(); i++){
-		if (content[i] == s1[0]){
-			if (std::strncmp(&content[i], s1.c_str(), s1.length()) == 0){
-				content.erase(i, s1.length());
-				content.insert(i, s2);
-				i += s2.length();
-			}
+	for (unsigned long i = 0; i < content.length(); i++)
+	{
+		if (std::strncmp(&content[i], s1.c_str(), s1.length()) == 0)
+		{
+			content.erase(i, s1.length());
+			content.insert(i, s2);
+			i += s2.length();
 		}
 	}
 	return (content);
 }
 
-std::string	openFile(std::string filename){
-	std::ifstream	ifs;
-	std::string		line;
-	std::string		content;
+std::string openFile(std::string filename)
+{
+	std::ifstream ifs;
+	std::string line;
+	std::string content;
 
 	ifs.open(filename);
-	if (!ifs.is_open()){
+	if (!ifs.is_open())
+	{
 		std::cout << "Error opening file" << std::endl;
 		return ("");
 	}
-	while (std::getline(ifs, line)){
+	while (std::getline(ifs, line))
+	{
 		content += line + "\n";
 	}
 	ifs.close();
 	return (content);
 }
 
-int	writeFile(char *filename, std::string content){
-	std::ofstream	ofs;
+int writeFile(char *filename, std::string content)
+{
+	std::ofstream ofs;
 
 	std::strcat(filename, ".replace");
 	ofs.open(filename);
-	if (!ofs.is_open()){
+	if (!ofs.is_open())
+	{
 		std::cout << "Error opening file" << std::endl;
 		return (1);
 	}
@@ -60,10 +67,12 @@ int	writeFile(char *filename, std::string content){
 	return (0);
 }
 
-int main(int argc, char **argv) {
-	std::string		content;
+int main(int argc, char **argv)
+{
+	std::string content;
 
-	if (argc != 4){
+	if (argc != 4)
+	{
 		std::cout << "Wrong number of arguments" << std::endl;
 		return (1);
 	}
