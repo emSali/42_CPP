@@ -6,13 +6,13 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:43:04 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 16:47:40 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/24 17:53:39 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(void) : ClapTrap() {
+FragTrap::FragTrap(void) : FragTrap() {
 	std::cout << "FragTrap default constructor called" << std::endl;
 	this->_maxHitPoints = 100;
 	this->_hitPoints = 100;
@@ -20,7 +20,7 @@ FragTrap::FragTrap(void) : ClapTrap() {
 	this->_attackDamage = 30;
 }
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name) {
+FragTrap::FragTrap(std::string name) : FragTrap(name) {
 	std::cout << "FragTrap constructor called" << std::endl;
 	this->_maxHitPoints = 100;
 	this->_hitPoints = 100;
@@ -28,7 +28,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 	this->_attackDamage = 30;
 }
 
-FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy) {
+FragTrap::FragTrap(const FragTrap &copy) : FragTrap(copy) {
 	std::cout << "FragTrap copy constructor called" << std::endl;
 	*this = copy;
 	return;
@@ -49,7 +49,23 @@ FragTrap &FragTrap::operator=(const FragTrap &src) {
 	return (*this);
 }
 
-void FragTrap::highFiveGuys(void) {
+void FragTrap::highFivesGuys(void) {
 	std::cout << "FragTrap " << this->_name << " wants a High Five!" << std::endl;
+	return;
+}
+
+void FragTrap::attack(const std::string &target) {
+	if (this->_energyPoints < 1)
+	{
+		std::cout << "FragTrap " << this->_name << " is out of energy" << std::endl;
+		return;
+	}
+	else if (this->_hitPoints < 1)
+	{
+		std::cout << "FragTrap " << this->_name << " is dead" << std::endl;
+		return;
+	}
+	std::cout << "FragTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage" << std::endl;
+	this->_energyPoints -= 1;
 	return;
 }
