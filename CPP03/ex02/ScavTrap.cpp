@@ -6,13 +6,13 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:07:53 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 17:21:22 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/25 18:29:41 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) : ScavTrap() {
+ScavTrap::ScavTrap(void) : ClapTrap() {
 	std::cout << "ScavTrap default constructor called" << std::endl;
 	this->_maxHitPoints = 100;
 	this->_hitPoints = 100;
@@ -20,7 +20,7 @@ ScavTrap::ScavTrap(void) : ScavTrap() {
 	this->_attackDamage = 20;
 }
 
-ScavTrap::ScavTrap(std::string name) : ScavTrap(name) {
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	std::cout << "ScavTrap constructor called" << std::endl;
 	this->_maxHitPoints = 100;
 	this->_hitPoints = 100;
@@ -28,7 +28,7 @@ ScavTrap::ScavTrap(std::string name) : ScavTrap(name) {
 	this->_attackDamage = 20;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &copy) : ScavTrap(copy) {
+ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy) {
 	std::cout << "ScavTrap copy constructor called" << std::endl;
 	*this = copy;
 	return;
@@ -55,14 +55,14 @@ void ScavTrap::guardGate(void) {
 }
 
 void ScavTrap::attack(const std::string &target) {
-	if (this->_energyPoints < 1)
-	{
-		std::cout << "ScavTrap " << this->_name << " is out of energy" << std::endl;
-		return;
-	}
-	else if (this->_hitPoints < 1)
+	if (this->_hitPoints < 1)
 	{
 		std::cout << "ScavTrap " << this->_name << " is dead" << std::endl;
+		return;
+	}
+	else if (this->_energyPoints < 1)
+	{
+		std::cout << "ScavTrap " << this->_name << " is out of energy" << std::endl;
 		return;
 	}
 	std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage" << std::endl;

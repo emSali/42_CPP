@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:24:07 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 16:34:48 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/25 18:24:45 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &src) {
 }
 
 void ClapTrap::attack(const std::string &target) {
-	if (this->_energyPoints < 1)
-	{
-		std::cout << "ClapTrap " << this->_name << " is out of energy" << std::endl;
-		return;
-	}
-	else if (this->_hitPoints < 1)
+	if (this->_hitPoints < 1)
 	{
 		std::cout << "ClapTrap " << this->_name << " is dead" << std::endl;
+		return;
+	}
+	else if (this->_energyPoints < 1)
+	{
+		std::cout << "ClapTrap " << this->_name << " is out of energy" << std::endl;
 		return;
 	}
 	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage" << std::endl;
@@ -61,7 +61,7 @@ void ClapTrap::attack(const std::string &target) {
 void ClapTrap::takeDamage(unsigned int amount) {
 	if (this->_hitPoints < 1)
 	{
-		std::cout << "ClapTrap " << this->_name << " is already dead" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " is dead" << std::endl;
 		return;
 	}
 	else if (amount < 1)

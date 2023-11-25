@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:43:04 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 17:58:30 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/25 18:27:54 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ void FragTrap::highFivesGuys(void) {
 }
 
 void FragTrap::attack(const std::string &target) {
-	if (this->_energyPoints < 1)
-	{
-		std::cout << "FragTrap " << this->_name << " is out of energy" << std::endl;
-		return;
-	}
-	else if (this->_hitPoints < 1)
+	if (this->_hitPoints < 1)
 	{
 		std::cout << "FragTrap " << this->_name << " is dead" << std::endl;
+		return;
+	}
+	else if (this->_energyPoints < 1)
+	{
+		std::cout << "FragTrap " << this->_name << " is out of energy" << std::endl;
 		return;
 	}
 	std::cout << "FragTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage" << std::endl;

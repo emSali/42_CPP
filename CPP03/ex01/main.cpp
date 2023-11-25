@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:02:37 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 16:30:40 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/25 18:33:12 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ int main( void ) {
 	scav3.attack("Mario");
 	scav3.takeDamage(50);
 	scav3.beRepaired(30);
+	scav3.takeDamage(70);
+	scav3.takeDamage(70);
+	scav3.beRepaired(30);
 	std::cout << std::endl;
-
 
 }
