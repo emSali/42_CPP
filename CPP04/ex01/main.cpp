@@ -32,6 +32,10 @@ int main(void)
 	for (int j = 0; j < array_size; j++) {
 		delete animals[j];
 	}
+		Dog basic;
+	{
+		Dog tmp = basic;
+	}
 
 	return (0);
 }
