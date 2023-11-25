@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   POint.cpp                                          :+:      :+:    :+:   */
+/*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 11:04:02 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 12:05:29 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/25 17:56:31 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ Point::~Point(void) {
 }
 
 Point & Point::operator=(const Point &src) {
-	this->_x = src.getX();
-	this->_y = src.getY();
+	(void ) src;
+	//this->_x = src.getX();
+	//this->_y = src.getY();
 	return (*this);
 }
 
@@ -41,14 +42,4 @@ float Point::getX(void) const {
 
 float Point::getY(void) const {
 	return (this->_y.toFloat());
-}
-
-void Point::setX(const float x) {
-	this->_x = x;
-	return;
-}
-
-void Point::setY(const float y) {
-	this->_y = y;
-	return;
 }

@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 21:35:38 by esali             #+#    #+#             */
-/*   Updated: 2023/11/25 16:00:07 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/25 17:51:36 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,13 @@ int main(void)
 	std::cout << "Value of c after mulitplication with : " << c << std::endl;
 	c = c / Fixed(2);
 	std::cout << "Value of c during post-decrement: " << c-- << std::endl;
-	std::cout << "Value of c after post-decrement: " << c-- << std::endl;
-
-	std::cout << "Value of c during pre-decrement " << c << std::endl;
-
-
-
-
-
-
-
-
-
-
+	std::cout << "Value of c after post-decrement: " << c << std::endl;
+	std::cout << "Value of c during pre-decrement " << --c << std::endl;
+	std::cout << "Value of c afer pre-decrement " << c << std::endl;
+	std::cout << "Value of c during post-increment: " << c-- << std::endl;
+	std::cout << "Value of c after post-increment: " << c << std::endl;
+	std::cout << "Value of c during pre-increment " << --c << std::endl;
+	std::cout << "Value of c afer pre-increment " << c << std::endl;
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 21:35:28 by esali             #+#    #+#             */
-/*   Updated: 2023/11/23 23:01:17 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/25 17:52:05 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Fixed::Fixed(const int value) {
 }
 
 Fixed::Fixed(const float value) {
-	this->_value = std::roundf(value * (1 << this->_bits));
+	this->_value = roundf(value * (1 << this->_bits));
 	return;
 }
 
