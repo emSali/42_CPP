@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:24:54 by esali             #+#    #+#             */
-/*   Updated: 2023/11/25 22:41:56 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/26 13:41:33 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,11 @@ int main(void)
 		const WrongAnimal *meta2 = new WrongAnimal();
 		const WrongAnimal *j2 = new WrongCat();
 		std::cout << std::endl;
-		std::cout << meta2->getType() << " " << std::endl;
-		std::cout << j2->getType() << " " << std::endl;
+		std::cout << "WronAnimal type: " << meta2->getType() << " -> sound: " ;
 		meta2->makeSound();
+		std::cout << "WrongCat type: " << j2->getType() << " -> sound: ";
 		j2->makeSound();
+
 		std::cout << std::endl;
 		delete meta2;
 		delete j2;

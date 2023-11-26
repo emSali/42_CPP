@@ -14,6 +14,7 @@
 
 WrongCat::WrongCat(void) : WrongAnimal("WrongCat") {
 	std::cout << "WrongCat default constructor called" << std::endl;
+	this->_type = "WrongCat";
 	return;
 }
 
@@ -30,7 +31,7 @@ WrongCat::~WrongCat(void) {
 
 WrongCat &WrongCat::operator=(const WrongCat &src) {
 	std::cout << "WrongCat assignation operator called" << std::endl;
-	this->type = src.getType();
+	this->_type = src.getType();
 	return (*this);
 }
 

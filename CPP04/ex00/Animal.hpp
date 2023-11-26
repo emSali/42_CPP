@@ -14,6 +14,7 @@
 # define ANIMAL_H
 
 # include <iostream>
+# include <string.h>
 
 class Animal {
 	public:
@@ -28,7 +29,7 @@ class Animal {
 		virtual void makeSound(void) const;
 
 	protected:
-		std::string type;
+		std::string _type;
 };
 
 #endif

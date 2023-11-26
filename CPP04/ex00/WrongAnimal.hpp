@@ -29,7 +29,7 @@ class WrongAnimal {
 		void makeSound(void) const;
 
 	protected:
-		std::string type;
+		std::string _type;
 };
 
 #endif
