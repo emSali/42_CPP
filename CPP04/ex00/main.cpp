@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:24:54 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 21:54:56 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/25 22:41:56 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int main(void)
 		std::cout << std::endl;
 		delete (cat);
 	}
-	{
 		std::cout << std::endl;
+	{
 		const Animal *meta = new Animal();
 		const Animal *j = new Dog();
 		const Animal *i = new Cat();
@@ -53,8 +53,8 @@ int main(void)
 		delete i;
 		delete j;
 	}
-	{
 		std::cout << std::endl;
+	{
 		std::cout << "***WRONG ANIMALS***" << std::endl;
 		const WrongAnimal *meta2 = new WrongAnimal();
 		const WrongAnimal *j2 = new WrongCat();
@@ -69,4 +69,5 @@ int main(void)
 
 		return 0;
 	}
+
 }
