@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:06:33 by esali             #+#    #+#             */
-/*   Updated: 2023/11/26 14:16:56 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/26 15:20:02 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Cat::Cat(void) : Animal("Cat") {
 	return;
 }
 
-Cat::Cat(const Cat &copy) {
+Cat::Cat(const Cat &copy): Animal(copy) {
 	std::cout << "Cat copy constructor called" << std::endl;
 	*this = copy;
 	return;

@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:46:18 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 22:47:50 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/26 15:39:24 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,14 @@ AMateria &AMateria::operator=(AMateria const &src) {
 	//std::cout << "AMateria assignment operator called" << std::endl;
 	this->_type = src.getType();
 	return (*this);
+}
+
+
+std::string const & AMateria::getType() const{
+	return (this->_type);
+}
+
+
+void AMateria::use(ICharacter &target){
+	(void) target;
 }

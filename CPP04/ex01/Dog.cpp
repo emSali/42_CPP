@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:06:03 by esali             #+#    #+#             */
-/*   Updated: 2023/11/26 14:17:02 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/26 15:19:35 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Dog::Dog(void) : Animal("Dog") {
 	return;
 }
 
-Dog::Dog(const Dog &copy) {
+Dog::Dog(const Dog &copy) : Animal(copy) {
 	std::cout << "Dog copy constructor called" << std::endl;
 	*this = copy;
 	return;

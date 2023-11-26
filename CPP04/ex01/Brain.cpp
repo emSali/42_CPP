@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:58:56 by esali             #+#    #+#             */
-/*   Updated: 2023/11/26 14:16:39 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/26 15:27:31 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ Brain &Brain::operator=(const Brain &src) {
 	for (int i = 0; i < 100; i++)
 		this->setIdea(i, src._ideas[i]);
 	return (*this);
+}
+
+std::string Brain::getIdea(int index) const {
+	return (this->_ideas[index]);
 }
 
 void Brain::setIdea(int index, std::string idea) {

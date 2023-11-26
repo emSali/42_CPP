@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:24:54 by esali             #+#    #+#             */
-/*   Updated: 2023/11/26 13:41:33 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/26 13:43:27 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int main(void)
 		meta2->makeSound();
 		std::cout << "WrongCat type: " << j2->getType() << " -> sound: ";
 		j2->makeSound();
-
 		std::cout << std::endl;
 		delete meta2;
 		delete j2;

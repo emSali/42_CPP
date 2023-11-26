@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 20:59:18 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 22:20:51 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/26 15:24:23 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class AAnimal {
 		virtual void makeSound(void) const = 0;
 
 	protected:
-		std::string type;
+		std::string _type;
 };
 
 #endif

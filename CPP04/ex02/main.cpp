@@ -15,6 +15,8 @@
 
 int main(void)
 {
+	//AAnimal test;
+
 	static int array_size = 4;
 	int i = 0;
 	const AAnimal *animals[array_size];
@@ -31,6 +33,19 @@ int main(void)
 	for (int j = 0; j < array_size; j++) {
 		delete animals[j];
 	}
+
+	std::cout << std::endl << std::endl;
+	Dog basic;
+	std::cout << basic.getType() << ": ";
+	basic.makeSound();
+	{
+		std::cout << std::endl;
+		Dog tmp = basic;
+		std::cout << basic.getType() << ": ";
+		basic.makeSound();
+	}
+	std::cout << std::endl;
+
 
 	return (0);
 }

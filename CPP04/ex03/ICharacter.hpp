@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:32:06 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 22:44:42 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/26 15:42:13 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class ICharacter {
 	public:
 		ICharacter(void);
 		ICharacter(const ICharacter &copy);
-		virtual ICharacter &operator=(const ICharacter &src) = 0;
+		ICharacter &operator=(const ICharacter &src);
 		virtual ~ICharacter() {}
 
 		virtual std::string const & getName() const = 0;
