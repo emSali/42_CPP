@@ -32,10 +32,19 @@ int main(void)
 	for (int j = 0; j < array_size; j++) {
 		delete animals[j];
 	}
-		Dog basic;
+
+	std::cout << std::endl << std::endl;
+	Dog basic;
+	std::cout << basic.getType() << ": ";
+	basic.makeSound();
 	{
+		std::cout << std::endl;
 		Dog tmp = basic;
+		std::cout << basic.getType() << ": ";
+		basic.makeSound();
 	}
+	std::cout << std::endl;
+
 
 	return (0);
 }

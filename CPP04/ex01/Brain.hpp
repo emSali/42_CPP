@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:56:05 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 22:04:02 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/26 14:13:53 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Brain
 		void setIdea(int index, std::string idea);
 
 	private:
-		std::string ideas[100];
+		std::string _ideas[100];
 };
 
 #endif

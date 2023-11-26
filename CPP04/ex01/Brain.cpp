@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:58:56 by esali             #+#    #+#             */
-/*   Updated: 2023/11/24 22:23:25 by esali            ###   ########.fr       */
+/*   Updated: 2023/11/26 14:16:39 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ Brain::~Brain(void) {
 Brain &Brain::operator=(const Brain &src) {
 	std::cout << "Brain assignment operator called" << std::endl;
 	for (int i = 0; i < 100; i++)
-		this->setIdea(i, src.ideas[i]);
+		this->setIdea(i, src._ideas[i]);
 	return (*this);
 }
 
 void Brain::setIdea(int index, std::string idea) {
-	this->ideas[index] = idea;
+	this->_ideas[index] = idea;
 	return;
 }

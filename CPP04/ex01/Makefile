@@ -2,7 +2,7 @@ NAME 			= animals
 SRCS 			= main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
 OBJS 			= $(SRCS:.cpp=.o)
 RM				= rm -f
-FLAGS			= -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
+FLAGS			= -Wall -Wextra -Werror -Wno-shadow -std=c++98 -fsanitize=address -g
 CC				= c++
 
 .cpp.o:
