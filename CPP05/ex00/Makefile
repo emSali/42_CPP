@@ -1,9 +1,9 @@
-NAME 			= materia
+NAME 			= bureacrat #check name 
 SRCS 			= main.cpp Bureacrat.cpp
 OBJS 			= $(SRCS:.cpp=.o)
 RM				= rm -f
 FLAGS			= -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
-CC				= c++
+CC				= g++
 
 .cpp.o:
 	$(CC) $(FLAGS) -c $< -o ${<:.cpp=.o}
