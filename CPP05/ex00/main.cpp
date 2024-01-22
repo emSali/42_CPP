@@ -31,7 +31,7 @@ int main(void) {
     b2.decrementGrade();
 
     std::cout << std::endl;
-    
+
     b1.decrementGrade();
     b2.incrementGrade();
     std::cout << b1 << std::endl;

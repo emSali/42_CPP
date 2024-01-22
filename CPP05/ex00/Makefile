@@ -1,5 +1,5 @@
-NAME 			= bureacrat #check name 
-SRCS 			= main.cpp Bureacrat.cpp
+NAME 			= bureaucrat #check name
+SRCS 			= main.cpp Bureaucrat.cpp
 OBJS 			= $(SRCS:.cpp=.o)
 RM				= rm -f
 FLAGS			= -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
