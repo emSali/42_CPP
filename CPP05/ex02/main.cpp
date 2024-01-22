@@ -5,8 +5,8 @@
 int main(void) {
 
 	Bureaucrat b1("b1", 50);
-	Bureaucrat b2("b3", 10);
-	Bureaucrat b3("b3", 4);
+	Bureaucrat b2("b3", 25);
+	Bureaucrat b3("b3", 5);
 
 	PresidentialPardonForm ppf1("PPF1");
 	PresidentialPardonForm ppf2("PPF2");
@@ -28,7 +28,6 @@ int main(void) {
 	b3.signForm(ppf3);
 	b3.executeForm(ppf3);
 	std::cout << ppf2 << std::endl;
-
 
 	return (0);
 
