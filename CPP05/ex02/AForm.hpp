@@ -20,6 +20,7 @@ class AForm {
 
 		void			beSigned(Bureaucrat &b);
 		virtual void	execute(Bureaucrat &b) const = 0;
+		void			checkExecute(Bureaucrat &b) const;
 		std::string	getName() const;
 		bool		getIsSigned() const;
 		int			getRequiredGrade() const;

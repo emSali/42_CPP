@@ -1,55 +1,34 @@
 
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main(void) {
 
-	try {
-        Form f1("Test", 42, -1);
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
-    try {
-        Form f2("Test", -1, 42);
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
-    try {
-        Form f3("Test", 151, 42);
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
-    try {
-        Form f4("Test", 42, 151);
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
+	Bureaucrat b1("b1", 50);
+	Bureaucrat b2("b3", 10);
+	Bureaucrat b3("b3", 4);
 
-    std::cout << std::endl;
+	PresidentialPardonForm ppf1("PPF1");
+	PresidentialPardonForm ppf2("PPF2");
+	PresidentialPardonForm ppf3("PPF3");
 
-    Bureaucrat b1("Ben", 2);
-    Bureaucrat b2("Elon", 150);
-    Bureaucrat b3("Mark", 51);
-    std::cout << b1 << std::endl;
-    std::cout << b2 << std::endl;
-    std::cout << b3 << std::endl << std::endl;
+	std::cout << b1 << std::endl;
+	b1.executeForm(ppf1);
+	b1.signForm(ppf1);
+	std::cout << ppf1 << std::endl;
 
-    Form f1("some Form", 10, 1);
-    Form f2("another Form", 100, 10);
-    Form f3("third form doing the same", 50, 50);
-    std::cout << f1 << std::endl;
-    std::cout << f2 << std::endl;
-    std::cout << f3 << std::endl << std::endl;
+	std::cout << std::endl << b2 << std::endl;
+	b2.executeForm(ppf2);
+	b2.signForm(ppf2);
+	b2.executeForm(ppf2);
+	std::cout << ppf2 << std::endl;
 
-    b1.signForm(f1);
-    b2.signForm(f2);
-    b3.signForm(f3);
+	std::cout << std::endl << b3 << std::endl;
+	b3.executeForm(ppf3);
+	b3.signForm(ppf3);
+	b3.executeForm(ppf3);
+	std::cout << ppf2 << std::endl;
 
-	std::cout << std::endl;
-
-	b3.incrementGrade();
-	std::cout << b3 << std::endl;
-	b3.signForm(f3);
-	std::cout << f3 << std::endl;
 
 	return (0);
 

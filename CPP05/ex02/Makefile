@@ -1,5 +1,5 @@
 NAME 			= form
-SRCS 			= main.cpp Bureaucrat.cpp Form.cpp
+SRCS 			= main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp
 OBJS 			= $(SRCS:.cpp=.o)
 RM				= rm -f
 FLAGS			= -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g

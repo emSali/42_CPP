@@ -4,10 +4,10 @@
 
 # include <iostream>
 # include <string>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 // Forward declaration to break circular dependency
-class Form;
+class AForm;
 
 class Bureaucrat {
 
@@ -20,7 +20,8 @@ class Bureaucrat {
 
         void	incrementGrade() ;
         void	decrementGrade() ;
-		void	signForm(Form &form);
+		void	signForm(AForm &form);
+		void	executeForm(AForm const &form);
 		std::string	getName() const;
 		int			getGrade() const;
 
