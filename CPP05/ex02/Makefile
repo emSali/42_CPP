@@ -1,9 +1,10 @@
-NAME 			= form
-SRCS 			= main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp
-OBJS 			= $(SRCS:.cpp=.o)
-RM				= rm -f
-FLAGS			= -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
-CC				= g++
+NAME 			=	form
+SRCS 			=	main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp \
+					ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
+OBJS 			=	$(SRCS:.cpp=.o)
+RM				=	rm -f
+FLAGS			=	-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
+CC				=	g++
 
 .cpp.o:
 	$(CC) $(FLAGS) -c $< -o ${<:.cpp=.o}
