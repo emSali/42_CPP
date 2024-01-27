@@ -28,8 +28,8 @@ std::string ShrubberyCreationForm::getTarget() const {
 void ShrubberyCreationForm::execute (Bureaucrat &b) const {
 	AForm::checkExecute(b);
 		std::string filename = getTarget() + "_shrubbery";
-	//c_str() returns a pointer to an array that contains a null-terminated sequence of characters (i.e., a C-string) representing the current value of the string object.
-	std::ofstream ofs(filename.c_str()); //try without c_string
+	//c_str() returns a pointer to an array that contains a constant null-terminated sequence of characters
+	std::ofstream ofs(filename.c_str());
 	if (ofs.is_open())
 	{
 		ofs << "               ,@@@@@@@,\n       ,,,.   ,@@@@@@/@@,  .oo8888o.\n    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\n   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'\n   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'\n   `&%\\ ` /%&'    |.|        \\ '|8'\n       |o|        | |         | |\n       |.|        | |         | |\n_//__\\/._\\//_/__/  ,\\_//__\\/.  \\_//__/_\n" << std::endl;;
