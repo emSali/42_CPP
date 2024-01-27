@@ -12,7 +12,7 @@ class Bureaucrat {
         Bureaucrat(const Bureaucrat &copy);
         Bureaucrat(std::string name, int grade);
         Bureaucrat &operator=(const Bureaucrat &b);
-        virtual ~Bureaucrat(void);
+        ~Bureaucrat(void);
 
         void	incrementGrade() ;
         void	decrementGrade() ;

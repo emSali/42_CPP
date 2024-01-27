@@ -3,7 +3,7 @@ SRCS 			= main.cpp Bureaucrat.cpp Form.cpp
 OBJS 			= $(SRCS:.cpp=.o)
 RM				= rm -f
 FLAGS			= -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
-CC				= g++
+CC				= c++
 
 .cpp.o:
 	$(CC) $(FLAGS) -c $< -o ${<:.cpp=.o}
