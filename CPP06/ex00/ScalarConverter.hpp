@@ -2,8 +2,11 @@
 #ifndef SCALARCONVERTER_HPP
 #define SCALARCONVERTER_HPP
 
-# include <iostream>
-# include <string>
+#include <iostream>
+#include <string>
+#include <limits>
+#include <iomanip>
+#include <stdlib.h>
 
 class ScalarConverter {
 
@@ -17,8 +20,8 @@ class ScalarConverter {
 		ScalarConverter &operator=(const ScalarConverter &sc);
 		virtual ~ScalarConverter(void);
 
-		bool isNumber(const std::string str);
-
 };
+		
+		bool isNumber(const std::string str);
 
 #endif
