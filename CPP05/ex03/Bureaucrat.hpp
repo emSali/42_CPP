@@ -11,15 +11,15 @@ class AForm;
 
 class Bureaucrat {
 
-    public:
-        Bureaucrat(void);
-        Bureaucrat(const Bureaucrat &copy);
-        Bureaucrat(std::string name, int grade);
-        Bureaucrat &operator=(const Bureaucrat &b);
-        virtual ~Bureaucrat(void);
+	public:
+		Bureaucrat(void);
+		Bureaucrat(const Bureaucrat &copy);
+		Bureaucrat(std::string name, int grade);
+		Bureaucrat &operator=(const Bureaucrat &b);
+		virtual ~Bureaucrat(void);
 
-        void	incrementGrade() ;
-        void	decrementGrade() ;
+		void	incrementGrade() ;
+		void	decrementGrade() ;
 		void	signForm(AForm &form);
 		void	executeForm(AForm const &form);
 		std::string	getName() const;
