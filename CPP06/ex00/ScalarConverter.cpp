@@ -27,7 +27,8 @@ void ScalarConverter::convert(std::string str) {
 	//changes string into its long double representation. removes leading whitespaces an sets value of endPtr to first char after nr
 	long double doub = strtod(&str[0], &endPtr);
 
-	if (((endPtr[0] == 'f' && endPtr[1] == '\0') || endPtr[0] == '\0') && str != "inff" && str != "inf") {
+	std::cout << "doub: " << doub << " enPtr: " << endPtr << std::endl;
+	if (((endPtr[0] != '\0' && endPtr[1] == '\0' && doub == 0) || endPtr[0] == '\0' || (endPtr[0] != 'f' && endPtr[1] == '\0' && doub != 0)) && str != "inff" && str != "inf") {
 
 		if (str == "nan" || str == "nanf" || str == "-inf" || str == "-inff" || str == "+inf" || str == "+inff") {
 			d = doub;
@@ -46,10 +47,10 @@ void ScalarConverter::convert(std::string str) {
 			std::cout << "char: '" << endPtr[0] << "'"<< std::endl;
 		} else {
 			c = static_cast<char>(doub);
-		if (isprint(c))
-			std::cout << "char: '" << c << "'"<< std::endl;
-		else
-			std::cout << "char: Non displayable" << std::endl;
+			if (isprint(c))
+				std::cout << "char: '" << c << "'"<< std::endl;
+			else
+				std::cout << "char: Non displayable" << std::endl;
 		}
 
 		//INT
@@ -73,9 +74,8 @@ void ScalarConverter::convert(std::string str) {
 			std::cout << "double: impossible" << std::endl;
 		else {
 			d = static_cast<double>(doub);
-			std::cout << "float: " << std::fixed << std::setprecision(1) << d << std::endl;
+			std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
 		}
-
 
 	} else {
 
