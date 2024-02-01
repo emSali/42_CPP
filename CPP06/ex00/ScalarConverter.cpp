@@ -28,7 +28,8 @@ void ScalarConverter::convert(std::string str) {
 	long double doub = strtod(&str[0], &endPtr);
 
 	//std::cout << "doub: " << doub << " enPtr: " << endPtr << std::endl;
-	if (((endPtr[0] != '\0' && endPtr[1] == '\0' && doub == 0) || endPtr[0] == '\0' || (endPtr[0] == 'f' && endPtr[1] == '\0' && doub != 0)) && str != "inff" && str != "inf") {
+	if (((endPtr[0] != '\0' && endPtr[1] == '\0' && doub == 0) || endPtr[0] == '\0' || (endPtr[0] == 'f' && endPtr[1] == '\0' && doub != 0)) \
+	&& str != "inff" && str != "inf" && str != "-nan" && str != "+nan" && str != "+nanf" && str != "-nanf") {
 
 		if (str == "nan" || str == "nanf" || str == "-inf" || str == "-inff" || str == "+inf" || str == "+inff") {
 			d = doub;
