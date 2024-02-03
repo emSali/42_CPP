@@ -1,5 +1,5 @@
 NAME 			=	base
-SRCS 			=	main.cpp whatever.cpp
+SRCS 			=	main.cpp
 OBJS 			=	$(SRCS:.cpp=.o)
 RM				=	rm -f
 FLAGS			=	-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
