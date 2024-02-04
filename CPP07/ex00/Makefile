@@ -1,4 +1,4 @@
-NAME 			=	base
+NAME 			=	template
 SRCS 			=	main.cpp
 OBJS 			=	$(SRCS:.cpp=.o)
 RM				=	rm -f
