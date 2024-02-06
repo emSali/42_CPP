@@ -1,7 +1,6 @@
 #include "Span.hpp"
 
 int main() {
-	 std::cout << "----------------------------------------------" << std::endl;
 	{
 		Span sp = Span(5);
 		sp.addNumber(-10);
@@ -9,15 +8,14 @@ int main() {
 		sp.addNumber(18);
 		sp.addNumber(0);
 		sp.addNumber(10);
-		//std::cout << sp.shortestSpan() << std::endl;
+		std::cout << std::endl << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
 	}
 
-	std::cout << std::endl << "----------------------------------------------" << std::endl;
+	std::cout << std::endl << "----------------------------------------------" << std::endl << std::endl;
 
 	{
-		Span sp;
-		sp = Span(1);
+		Span sp = Span(1);
 
 		try {
 			sp.shortestSpan();
@@ -47,7 +45,18 @@ int main() {
 		}
 	}
 
-	std::cout << std::endl << "----------------------------------------------" << std::endl;
+	std::cout << std::endl << "----------------------------------------------" << std::endl << std::endl;
 
+	{
+		Span sp = Span(12000);
+		try {
+			sp.addRange(0, 12000);
+		} catch (std::exception & e) {
+			std::cout << e.what() << std::endl;
+		}
+		sp.addRange(0, 11999);
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl << std::endl;
 
+	}
 }
