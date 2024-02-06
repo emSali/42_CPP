@@ -1,12 +1,14 @@
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
-#include <iostream>
 #include <string>
 #include <exception>
+#include <iostream>
+#include <stdlib.h>
 
 template <typename T>
 class Array {
+
 	public:
 		Array(void);
 		Array(const Array &copy);
@@ -29,6 +31,6 @@ class Array {
 };
 
 template <typename T>
-std::ostream &operator<<(std::ostream &o, const Array<T> &b);
+std::ostream & operator<<(std::ostream &o, const Array<T> &b);
 
 #endif
