@@ -27,4 +27,6 @@ int main(void) {
 	que.push_back(42);
 	std::cout << "pos: " << easyfind(que, 42) << std::endl;
 	std::cout << "pos: " << easyfind(que, -99) << std::endl;
+
+	return (0);
 }

@@ -59,4 +59,6 @@ int main() {
 		std::cout << sp.longestSpan() << std::endl << std::endl;
 
 	}
+
+	return (0);
 }
