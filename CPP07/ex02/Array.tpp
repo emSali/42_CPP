@@ -19,13 +19,12 @@ Array<T>::Array(const Array<T> &copy) {
 
 template <typename T>
 Array<T>::~Array(void){
-	delete []  _arr;
+	delete [] _arr;
 }
 
 template <typename T>
 Array<T> & Array<T>::operator=(const Array<T> &copy){
 	_size = copy.size();
-	delete [] _arr;
 	_arr = new T[_size];
 	for (uint i = 0; i < _size; i++) {
 		_arr[i] = copy._arr[i];

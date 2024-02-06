@@ -19,6 +19,7 @@ int main(void) {
 		std::cout << iArr[i] << std::endl;
 
 	std::cout << std::endl << "-----------------" << std::endl << std::endl;
+
 	iter(cArr, 4, printCharToNr);
 
 }
