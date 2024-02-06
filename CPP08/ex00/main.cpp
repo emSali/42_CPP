@@ -3,10 +3,10 @@
 int main(void) {
 	// dynamic array
 	std::vector<int> vec(4, 42);
-	std::cout << "pos: " << easyfind(vec, 42) << std::endl;
+	std::cout << std::endl << "pos: " << easyfind(vec, 42) << std::endl;
 	std::cout << "pos: " << easyfind(vec, 99) << std::endl;
 
-	std::cout << "-----------------------------" << std::endl << std::endl;
+	std::cout << std::endl << "-----------------------------" << std::endl << std::endl;
 
 	// double linked list
 	std::list<int> list;
@@ -18,7 +18,7 @@ int main(void) {
 	std::cout << "pos: " << easyfind(list, -42) << std::endl;
 	std::cout << "pos: " << easyfind(list, 0) << std::endl;
 
-	std::cout << "-----------------------------" << std::endl << std::endl;
+	std::cout << std::endl << "-----------------------------" << std::endl << std::endl;
 
 	// double-ended queue data structure
 	std::deque<int> que;
@@ -26,7 +26,7 @@ int main(void) {
 	que.push_back(-42);
 	que.push_back(42);
 	std::cout << "pos: " << easyfind(que, 42) << std::endl;
-	std::cout << "pos: " << easyfind(que, -99) << std::endl;
+	std::cout << "pos: " << easyfind(que, -99) << std::endl << std::endl;
 
 	return (0);
 }

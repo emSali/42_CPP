@@ -2,6 +2,8 @@
 
 int main() {
 
+	std::cout << std::endl << "-- MUTANT STACK ---------------------------" << std::endl << std::endl;
+
 	{
 		MutantStack<int> mstack;
 		mstack.push(5);
@@ -25,7 +27,7 @@ int main() {
 		std::stack<int> s(mstack);
 	}
 
-	std::cout << std::endl << "-----------------------------" << std::endl << std::endl;
+	std::cout << std::endl << "-- LIST ---------------------------" << std::endl << std::endl;
 
 	{
 		std::list<int> list;
@@ -50,6 +52,60 @@ int main() {
 		std::list<int> s(list);
 	}
 
+	std::cout << std::endl << "-- MORE MUTANT STACK TESTS ---------------------------" << std::endl << std::endl;
+
+	{
+
+		MutantStack<int> foo,bar;
+		std::cout << "foo is empty: " << foo.empty() << " bar is empty: " << bar.empty() << std::endl << std::endl;
+		foo.push (10); foo.push(20); foo.push(30);
+		bar.push (111); bar.push(222);
+		std::cout << "size of foo: " << foo.size() << std::endl;
+		std::cout << "size of bar: " << bar.size() << std::endl << std::endl;
+
+		MutantStack<int>::iterator itFoo = foo.begin();
+		MutantStack<int>::iterator itBar = bar.begin();
+		MutantStack<int>::iterator iteFoo = foo.end();
+		MutantStack<int>::iterator iteBar = bar.end();
+
+		std::cout << "--Foo:" << std::endl;
+		while (itFoo != iteFoo)
+			{
+			std::cout << *itFoo << std::endl;
+			++itFoo;
+			}
+
+		std::cout << "--Bar:" << std::endl;
+		while (itBar != iteBar) {
+			std::cout << *itBar << std::endl;
+			++itBar;
+		}
+
+		std::cout << std::endl << "After swap:" << std::endl;
+		foo.swap(bar);
+
+		std::cout << "size of foo: " << foo.size() << std::endl;
+		std::cout << "size of bar: " << bar.size() << std::endl << std::endl;
+
+		itFoo = foo.begin();
+		itBar = bar.begin();
+		iteFoo = foo.end();
+		iteBar = bar.end();
+
+		std::cout << "--Foo:" << std::endl;
+		while (itFoo != iteFoo)
+			{
+			std::cout << *itFoo << std::endl;
+			++itFoo;
+			}
+
+		std::cout << "--Bar:" << std::endl;
+		while (itBar != iteBar) {
+			std::cout << *itBar << std::endl;
+			++itBar;
+		}
+
+	}
 	return 0;
 
 }

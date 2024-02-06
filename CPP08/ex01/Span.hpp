@@ -5,6 +5,7 @@
 #include <exception>
 #include <vector>
 #include <algorithm>
+#include <numeric>
 
 class Span {
 	public:
@@ -15,7 +16,7 @@ class Span {
 		~Span(void);
 
 		void				addNumber(int nr);
-		void				addRange(int start, int end);
+		void				addRange(int rangeSize);
 		int					shortestSpan() const;
 		int					longestSpan() const;
 		unsigned int		getSpace() const;

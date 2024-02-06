@@ -25,14 +25,12 @@ void Span::addNumber(int nr) {
 	_vec.push_back(nr);
 }
 
-void Span::addRange(int start, int end) {
-	if (end <= start)
-		return ;
-	if ((end - start + 1 + (int) _vec.size()) > (int) _space)
+void Span::addRange(int rangeSize) {
+	if ((rangeSize + (int) _vec.size()) > (int) _space)
 		throw Span::TooManyElements();
-	for (int i = start; i <= end; i++) {
-		addNumber(i);
-	}
+	std::vector<int> tmp(rangeSize);
+	std::iota(tmp.begin(), tmp.end(), 1);
+	_vec.insert(_vec.begin(), tmp.begin(), tmp.end());
 }
 
 int	Span::shortestSpan() const {
@@ -70,6 +68,6 @@ const char *Span::NoSpanFound::what() const throw() {
 
 
 const char *Span::TooManyElements::what() const throw() {
-	return "Not enough space in Span left";
+	return "Not enough space left in Span";
 }
 
