@@ -81,8 +81,21 @@ int main() {
 			++itBar;
 		}
 
-		std::cout << std::endl << "After swap:" << std::endl;
-		foo.swap(bar);
+		std::cout << std::endl << "After top, pop, push and addition:" << std::endl;
+		foo.pop();
+		foo.pop();
+		foo.top() = 0;
+		foo.push(1);
+		foo.push(42);
+		bar.push(424242);
+		bar.push(131313);
+		bar.push(1111);
+
+		itFoo = foo.begin();
+		while (itFoo != iteFoo) {
+			*itFoo += 10;
+			++itFoo;
+		}
 
 		std::cout << "size of foo: " << foo.size() << std::endl;
 		std::cout << "size of bar: " << bar.size() << std::endl << std::endl;
@@ -93,11 +106,10 @@ int main() {
 		iteBar = bar.end();
 
 		std::cout << "--Foo:" << std::endl;
-		while (itFoo != iteFoo)
-			{
+		while (itFoo != iteFoo) {
 			std::cout << *itFoo << std::endl;
 			++itFoo;
-			}
+		}
 
 		std::cout << "--Bar:" << std::endl;
 		while (itBar != iteBar) {

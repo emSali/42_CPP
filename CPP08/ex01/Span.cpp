@@ -25,12 +25,11 @@ void Span::addNumber(int nr) {
 	_vec.push_back(nr);
 }
 
-void Span::addRange(int rangeSize) {
-	if ((rangeSize + (int) _vec.size()) > (int) _space)
+void Span::addNumbers(std::vector<int> nums) {
+	// we use the > operator because we add _arr size to nums size.
+	if (_vec.size() + nums.size() > _space)
 		throw Span::TooManyElements();
-	std::vector<int> tmp(rangeSize);
-	std::iota(tmp.begin(), tmp.end(), 1);
-	_vec.insert(_vec.begin(), tmp.begin(), tmp.end());
+	_vec.insert(_vec.end(), nums.begin(), nums.end());
 }
 
 int	Span::shortestSpan() const {
