@@ -5,6 +5,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
+#include <limits>
+#include <exception>
 #include <map>
 
 class BitcoinExchange {
@@ -30,15 +33,20 @@ class BitcoinExchange {
 		};
 
 		class WrongFormat: public std::exception {
-			virtual const char * what() const throw();
+			public:
+				WrongFormat(std::string errorMessage);
+				virtual const char * what() const throw();
+			private:
+				std::string _error;
 		};
 
 	private:
 		void	fillPrices(std::string Filename);
+		float	getPrice(std::string line);
+		float	getAmount(std::string line);
 
-		std::map<std::string, std::string> _prices;
 
-
+		std::map<std::string, float> _prices;
 
 };
 
