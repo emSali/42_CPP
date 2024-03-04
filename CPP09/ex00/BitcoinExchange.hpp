@@ -18,7 +18,7 @@ class BitcoinExchange {
 		~BitcoinExchange();
 		BitcoinExchange & operator=(const BitcoinExchange &assign);
 
-		static void	printValue(std::string filename);
+		void	printValue(std::string filename);
 
 		class FileError: public std::exception {
 			virtual const char * what() const throw();
@@ -34,16 +34,16 @@ class BitcoinExchange {
 
 		class WrongFormat: public std::exception {
 			public:
-				WrongFormat(const char * errorMessage);
+				WrongFormat(std::string errorMessage);
 				virtual const char * what() const throw();
 			private:
-				const char * _error;
+				std::string _errorArea;
 		};
 
 	private:
 		void	fillPrices(std::string Filename);
-		static float	getPrice(std::string line);
-		static float	getAmount(std::string line);
+		float	getPrice(std::string line);
+		float	getAmount(std::string line);
 
 
 		std::map<std::string, float> _prices;

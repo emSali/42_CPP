@@ -61,13 +61,19 @@ float	BitcoinExchange::getPrice(std::string line) {
 	int year, month, day;
 	char dash1, dash2;
 	if (!(ss >> year >> dash1 >> month >> dash2 >> day))
-		throw BitcoinExchange::WrongFormat("line.substr(0, 10)");
+		throw BitcoinExchange::WrongFormat(line.substr(0, 10));
 	std::cout << year << dash1 << month << dash2 << day << std::endl;
+	if (day < 1 || day > 31 || month < 1 || month > 12 || year < 2009)
+		throw BitcoinExchange::WrongFormat(line.substr(0, 10));
+	
+	float price = this->_prices[line.substr(0,10)];
+
 	return (1.0);
 }
 
 float	BitcoinExchange::getAmount(std::string line) {
-	std::cout << line << std::endl;
+	(void) line;
+	//std::cout << line << std::endl;
 	return 1.0;
 }
 
@@ -83,8 +89,11 @@ const char *BitcoinExchange::NegativeNumber::what() const throw() {
 	return "Error: not a positive number";
 }
 
-BitcoinExchange::WrongFormat::WrongFormat(const char *error) : _error(error){}
+BitcoinExchange::WrongFormat::WrongFormat(std::string error){
+	this->_errorArea = error;
+}
 
 const char *BitcoinExchange::WrongFormat::what() const throw() {
-	return _error;
+	// TODO: Write correct error
+	return _errorArea.c_str();
 }
