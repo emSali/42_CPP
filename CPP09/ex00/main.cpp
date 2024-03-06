@@ -1,8 +1,9 @@
 #include "BitcoinExchange.hpp"
 
 int main() {
+	BitcoinExchange exchange;
 	try {
-		BitcoinExchange::printValue("input.txt");
+		exchange.printValue("input.txt");
 	} catch  (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}

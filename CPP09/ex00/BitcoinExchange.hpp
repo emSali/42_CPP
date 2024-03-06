@@ -34,10 +34,10 @@ class BitcoinExchange {
 
 		class WrongFormat: public std::exception {
 			public:
-				WrongFormat(std::string errorMessage);
+				WrongFormat(const char * errorArea);
 				virtual const char * what() const throw();
 			private:
-				std::string _errorArea;
+				const char * _error;
 		};
 
 	private:
