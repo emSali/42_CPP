@@ -9,6 +9,7 @@
 #include <limits>
 #include <exception>
 #include <map>
+#include <stdlib.h>
 
 class BitcoinExchange {
 
@@ -18,7 +19,7 @@ class BitcoinExchange {
 		~BitcoinExchange();
 		BitcoinExchange & operator=(const BitcoinExchange &assign);
 
-		void	printValue(std::string filename);
+		void	printValue(std::string filename) const;
 
 		class FileError: public std::exception {
 			virtual const char * what() const throw();
@@ -42,8 +43,9 @@ class BitcoinExchange {
 
 	private:
 		void	fillPrices(std::string Filename);
-		float	getPrice(std::string line);
-		float	getAmount(std::string line);
+		void	calcPrice(std::string line) const;
+		float	getPrice(char * date) const;
+		float	getAmount(char * amount) const;
 
 
 		std::map<std::string, float> _prices;

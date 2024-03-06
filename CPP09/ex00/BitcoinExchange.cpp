@@ -38,44 +38,88 @@ void	BitcoinExchange::fillPrices(std::string filename) {
 	file.close();
 }
 
-void	BitcoinExchange::printValue(std::string filename) {
+void	BitcoinExchange::printValue(std::string filename) const{
 	std::ifstream	file(filename);
 	std::string		line;
-	float			price;
-	float			amount;
 
 	if (!file.is_open())
 		throw BitcoinExchange::FileError();
 	while (std::getline(file, line)) {
 		try {
-			price = getPrice(line);
-			amount = getAmount(line);
-			std::cout << line.substr(0, 10) << " => " << amount << " = " << (price * amount) << std::endl;
+			calcPrice(line);
 		} catch(std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
 	}
+	file.close();
 }
 
-float	BitcoinExchange::getPrice(std::string line) {
-	std::istringstream ss(line);
+void	BitcoinExchange::calcPrice(std::string line) const{
+	char *date;
+	float price;
+	float amount;
+	char *splitamount;
+	char *delimiter;
+
+	date = std::strtok((char *)line.c_str(), " ");
+	if (date == NULL)
+		throw BitcoinExchange::WrongFormat(date);
+	price = BitcoinExchange::getPrice(date);
+	
+	delimiter = std::strtok(NULL, " ");
+	if (delimiter == NULL || delimiter[0] != '|' || delimiter[1] != '\0')
+		throw BitcoinExchange::WrongFormat(delimiter);
+
+	splitamount = std::strtok(NULL, " ");
+	if (splitamount == NULL || splitamount[0] == '\0')
+		throw BitcoinExchange::WrongFormat(splitamount);
+	amount = BitcoinExchange::getAmount(splitamount);
+
+	std::cout << date << " => " << amount << " = " << price * amount << std::endl;
+}
+
+
+float	BitcoinExchange::getPrice(char * date) const {
 	int year, month, day;
 	char dash1, dash2;
-	if (!(ss >> year >> dash1 >> month >> dash2 >> day))
-		throw BitcoinExchange::WrongFormat("line.substr(0, 10)");
-	std::cout << year << dash1 << month << dash2 << day << std::endl;
-	if (day < 1 || day > 31 || month < 1 || month > 12 || year < 2009)
-		throw BitcoinExchange::WrongFormat("line.substr(0, 10)");
 	
-	float price = this->_prices[line.substr(0,10)];
-	std::cout << "Price: " << price << std::endl;
-	return (price);
+	std::istringstream ss(date);
+
+	if (!(ss >> year >> dash1 >> month >> dash2 >> day))
+		throw BitcoinExchange::WrongFormat(date);
+	else if (dash1 != '-' || dash2 != '-')
+		throw BitcoinExchange::WrongFormat(date);
+	if (day < 1 || day > 31 || month < 1 || month > 12 || year < 2009)
+		throw BitcoinExchange::WrongFormat(date);
+
+	std::string key = date;
+	// lower bond is using lexicographical comparison to get the value just before the one that is input.
+	// it->first returns the key. it->second returns the value
+	std::map<std::string, float>::const_iterator it = _prices.lower_bound(key);
+	// If the exact date is found in the map
+	if (it != _prices.end() && it->first == key) {
+		return it->second;
+	}
+
+	// If the date is not found, but there is a lower date
+	if (it != _prices.begin()) {
+		--it;	// go to the value before, it being an initialize value. it's skipping all the days to go straight to the closest value.
+		return it->second;
+	}
+
+	// If the date is earlier than all dates in the map
+	return it->second;
 }
 
-float	BitcoinExchange::getAmount(std::string line) {
-	(void) line;
-	//std::cout << line << std::endl;
-	return 1.0;
+float BitcoinExchange::getAmount(char * amount) const {
+	float value;
+
+	value = static_cast<float>(atof(amount));
+	if (value < 0)
+		throw BitcoinExchange::NegativeNumber();
+	else if (value > 1000)
+		throw BitcoinExchange::TooLargeNumber();
+	return (value);
 }
 
 const char *BitcoinExchange::FileError::what() const throw() {
@@ -91,13 +135,14 @@ const char *BitcoinExchange::NegativeNumber::what() const throw() {
 }
 
 BitcoinExchange::WrongFormat::WrongFormat(const char * errorArea){
-	char message[] = "Error: bad input => ";
-	char tmp[std::strlen(errorArea) + std::strlen(message) + 1];
-	std::strcpy(tmp, message);
-	std::strcat(tmp, errorArea);
-	_error = tmp;
+	//char message[] = "Error: bad input => ";
+	// char* tmp = new char[std::strlen(errorArea) + std::strlen(message) + 1];
+	// std::strcpy(tmp, message);
+	// std::strcat(tmp, errorArea);
+	(void) errorArea;
 }
 
 const char *BitcoinExchange::WrongFormat::what() const throw() {
-	return _error;
+	(void) _error;
+	return "_error";
 }
