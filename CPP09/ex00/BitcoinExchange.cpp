@@ -38,16 +38,20 @@ void	BitcoinExchange::fillPrices(std::string filename) {
 	file.close();
 }
 
-void	BitcoinExchange::printValue(std::string filename) const{
-	std::ifstream	file(filename);
-	std::string		line;
+#include <string> // Include the <string> header
+
+void BitcoinExchange::printValue(std::string filename) const {
+	std::ifstream file(filename);
+	std::string line;
 
 	if (!file.is_open())
 		throw BitcoinExchange::FileError();
 	while (std::getline(file, line)) {
+		if (line.empty())
+			continue;
 		try {
 			calcPrice(line);
-		} catch(std::exception &e) {
+		} catch (std::exception& e) {
 			std::cout << e.what() << std::endl;
 		}
 	}
@@ -63,16 +67,16 @@ void	BitcoinExchange::calcPrice(std::string line) const{
 
 	date = std::strtok((char *)line.c_str(), " ");
 	if (date == NULL)
-		throw BitcoinExchange::WrongFormat(date);
+		throw BitcoinExchange::WrongFormat("DD-MM-YYYY");
 	price = BitcoinExchange::getPrice(date);
-	
+
 	delimiter = std::strtok(NULL, " ");
 	if (delimiter == NULL || delimiter[0] != '|' || delimiter[1] != '\0')
-		throw BitcoinExchange::WrongFormat(delimiter);
+		throw BitcoinExchange::WrongFormat(date);
 
 	splitamount = std::strtok(NULL, " ");
 	if (splitamount == NULL || splitamount[0] == '\0')
-		throw BitcoinExchange::WrongFormat(splitamount);
+		throw BitcoinExchange::WrongFormat(date);
 	amount = BitcoinExchange::getAmount(splitamount);
 
 	std::cout << date << " => " << amount << " = " << price * amount << std::endl;
@@ -113,8 +117,12 @@ float	BitcoinExchange::getPrice(char * date) const {
 
 float BitcoinExchange::getAmount(char * amount) const {
 	float value;
-
-	value = static_cast<float>(atof(amount));
+	
+	try {
+		value = std::stof(amount);
+	} catch (std::exception &e) {
+		throw BitcoinExchange::WrongFormat(amount);
+	}
 	if (value < 0)
 		throw BitcoinExchange::NegativeNumber();
 	else if (value > 1000)
@@ -135,14 +143,16 @@ const char *BitcoinExchange::NegativeNumber::what() const throw() {
 }
 
 BitcoinExchange::WrongFormat::WrongFormat(const char * errorArea){
-	//char message[] = "Error: bad input => ";
-	// char* tmp = new char[std::strlen(errorArea) + std::strlen(message) + 1];
-	// std::strcpy(tmp, message);
-	// std::strcat(tmp, errorArea);
-	(void) errorArea;
+	char message[] = "Error: bad input => ";
+	char* tmp = new char[std::strlen(errorArea) + std::strlen(message) + 1];
+	std::strcpy(tmp, message);
+	std::strcat(tmp, errorArea);
+	_error = tmp;
+	//(void) errorArea;
 }
 
 const char *BitcoinExchange::WrongFormat::what() const throw() {
-	(void) _error;
-	return "_error";
+	
+	return _error;
 }
+

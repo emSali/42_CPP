@@ -1,11 +1,14 @@
 #include "BitcoinExchange.hpp"
 
-int main() {
+int main(int ac, char *av[]) {
 	BitcoinExchange exchange;
-	try {
-		exchange.printValue("input.txt");
-	} catch  (std::exception &e) {
-		std::cout << e.what() << std::endl;
+	if (ac == 2) {
+		try {
+			exchange.printValue(av[1]);
+		} catch (std::exception &e) {
+			std::cout << e.what() << ": " << av[1] << std::endl;
+		}
 	}
-
+	else
+		std::cout << "Usage: ./bitcoin [filename]" << std::endl;
 }
