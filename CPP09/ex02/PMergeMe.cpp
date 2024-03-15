@@ -47,18 +47,24 @@ void PMergeMe::fill_containers(char *av[], int ac)
 	}
 }
 
-
-
 void PMergeMe::merge_deque()
 {
-	std::cout << "***** DEQUE *****" << std::endl;
+	//std::cout << "***** DEQUE *****" << std::endl;
 	struct timeval start, end;
 	gettimeofday(&start, NULL);
 	sortDequePairs();
-	print_deque(d1);
-	print_deque(d2);
+	int index = 0;
+	for (int i = 0; i < (int) d2.size(); i++) {
+		insertVectorNumber(d2[index]);
+		index = getNextIndex(index, d2.size() - 1);
+	}
 	gettimeofday(&end, NULL);
 	time_vector = (end.tv_sec - start.tv_sec) * 1000.0;
+}
+
+void PMergeMe::insertDequeNumber(int nr) {
+	std::deque<int>::iterator it = std::lower_bound(d1.begin(), d1.end(), nr);
+	d1.insert(it, nr);
 }
 
 void PMergeMe::sortDequePairs() {
@@ -84,20 +90,15 @@ void PMergeMe::sortDequePairs() {
 
 void PMergeMe::merge_vector()
 {
-	std::cout << "***** VECTOR *****" << std::endl;
+	//std::cout << "***** VECTOR *****" << std::endl;
 	struct timeval start, end;
 	gettimeofday(&start, NULL);
 	sortVectorPairs();
-	print_vector(v1);
-	print_vector(v2);
-	std::cout << std::endl;
 	int index = 0;
 	for (int i = 0; i < (int) v2.size(); i++) {
 		insertVectorNumber(v2[index]);
 		index = getNextIndex(index, v2.size() - 1);
 	}
-	std::cout << std::endl;
-	print_vector(v1);
 	gettimeofday(&end, NULL);
 	time_vector = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
 }
@@ -106,7 +107,6 @@ void PMergeMe::insertVectorNumber(int nr) {
 	std::vector<int>::iterator it = std::lower_bound(v1.begin(), v1.end(), nr);
 	v1.insert(it, nr);
 }
-
 
 void PMergeMe::sortVectorPairs() {
 	std::vector<int> temp;

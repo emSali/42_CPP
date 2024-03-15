@@ -6,11 +6,12 @@ int main(int ac, char **av)
         PMergeMe pmm(av, ac);
 		std::cout << "Before: ";
 		pmm.print_vector(pmm.v1);
-    	pmm.merge_deque();
 		pmm.merge_vector();
+    	pmm.merge_deque();
 		std::cout << "After: ";
 		pmm.print_vector(pmm.v1);
 		std::cout << "Time to process a range of " << ac - 1 << " elements with std::vector :" << std::fixed << pmm.get_time_vector() << std::endl;
+		std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque :" << std::fixed << pmm.get_time_deque() << std::endl;
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
         return 1;

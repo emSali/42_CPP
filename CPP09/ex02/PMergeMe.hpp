@@ -44,7 +44,7 @@ class PMergeMe
 		void sortVectorPairs();
 		void sortDequePairs();
 		void insertVectorNumber(int nr);
-		// void insertDequeNumber(int nr);
+		void insertDequeNumber(int nr);
 		void fill_containers(char *av[], int ac);
 		int getNextIndex(int index, int maxIndex);
 		int getJacobsthalNumber(int index);
