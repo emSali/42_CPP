@@ -2,14 +2,15 @@
 
 int main(int ac, char **av)
 {
-    PMergeMe pmm;
     try {
-        pmm = PMergeMe(av, ac);
+        PMergeMe pmm(av, ac);
+    	pmm.merge_deque();
+		pmm.merge_vector();
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
         return 1;
     }
-    pmm.merge_vector();
-    pmm.print_vector();
     return 0;
 }
+
+// https://github.com/decidedlyso/merge-insertion-sort/blob/master/diagram.svg
