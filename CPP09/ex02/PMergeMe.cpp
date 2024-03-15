@@ -93,14 +93,20 @@ void PMergeMe::merge_vector()
 	std::cout << std::endl;
 	int index = 0;
 	for (int i = 0; i < (int) v2.size(); i++) {
-		std::cout << index << ", " ;
+		insertVectorNumber(v2[index]);
 		index = getNextIndex(index, v2.size() - 1);
 	}
 	std::cout << std::endl;
+	print_vector(v1);
 	gettimeofday(&end, NULL);
-	time_vector = (end.tv_sec - start.tv_sec) * 1000.0;
-
+	time_vector = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
 }
+
+void PMergeMe::insertVectorNumber(int nr) {
+	std::vector<int>::iterator it = std::lower_bound(v1.begin(), v1.end(), nr);
+	v1.insert(it, nr);
+}
+
 
 void PMergeMe::sortVectorPairs() {
 	std::vector<int> temp;

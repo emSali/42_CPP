@@ -29,12 +29,13 @@ class PMergeMe
 			virtual const char * what() const throw();
 		};
 
+		// TODO!!! PUT PRIVATE
+		std::vector<int> v1;
+		std::deque<int> d2;
 
 	private:
-		std::vector<int> v1;
 		std::vector<int> v2;
 		std::deque<int> d1;
-		std::deque<int> d2;
 		int contLength;
 		float time_vector;
 		float time_deque;
@@ -42,6 +43,8 @@ class PMergeMe
 
 		void sortVectorPairs();
 		void sortDequePairs();
+		void insertVectorNumber(int nr);
+		// void insertDequeNumber(int nr);
 		void fill_containers(char *av[], int ac);
 		int getNextIndex(int index, int maxIndex);
 		int getJacobsthalNumber(int index);
