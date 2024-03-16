@@ -1,6 +1,6 @@
-#include "PMergeMe.hpp"
+#include "PmergeMe.hpp"
 
-PMergeMe::PMergeMe()
+PmergeMe::PmergeMe()
 {
 	contLength = 0;
 	time_vector = 0;
@@ -8,7 +8,7 @@ PMergeMe::PMergeMe()
 	hasOddNumber = false;
 }
 
-PMergeMe::PMergeMe(char *av[], int ac): contLength(ac - 1)
+PmergeMe::PmergeMe(char *av[], int ac): contLength(ac - 1)
 {
 	time_vector = 0;
 	time_deque = 0;
@@ -16,16 +16,16 @@ PMergeMe::PMergeMe(char *av[], int ac): contLength(ac - 1)
 	fill_containers(av, ac);
 }
 
-PMergeMe::~PMergeMe()
+PmergeMe::~PmergeMe()
 {
 }
 
-PMergeMe::PMergeMe(const PMergeMe &copy)
+PmergeMe::PmergeMe(const PmergeMe &copy)
 {
 	*this = copy;
 }
 
-PMergeMe &PMergeMe::operator=(const PMergeMe &copy)
+PmergeMe &PmergeMe::operator=(const PmergeMe &copy)
 {
 	v1 = copy.v1;
 	v2 = copy.v2;
@@ -36,24 +36,24 @@ PMergeMe &PMergeMe::operator=(const PMergeMe &copy)
 	return *this;
 }
 
-void PMergeMe::fill_containers(char *av[], int ac)
+void PmergeMe::fill_containers(char *av[], int ac)
 {
 	int i = 1;
 	char *endptr;
 	while (i < ac)
 	{	
 		if (!IsValidNumber(av[i]) )
-			throw PMergeMe::IllegalCharacter();
+			throw PmergeMe::IllegalCharacter();
 		long int nr = std::strtol(av[i], &endptr, 10);
 		if (*endptr != '\0' || nr > std::numeric_limits<int>::max())
-			throw PMergeMe::IllegalCharacter();
+			throw PmergeMe::IllegalCharacter();
 		v1.push_back(nr);
 		d1.push_back(nr);
 		i++;
 	}
 }
 
-void PMergeMe::merge_deque()
+void PmergeMe::merge_deque()
 {
 	//std::cout << "***** DEQUE *****" << std::endl;
 	struct timeval start, end;
@@ -71,12 +71,12 @@ void PMergeMe::merge_deque()
 	hasOddNumber = false;
 }
 
-void PMergeMe::insertDequeNumber(int nr) {
+void PmergeMe::insertDequeNumber(int nr) {
 	std::deque<int>::iterator it = std::lower_bound(d1.begin(), d1.end(), nr);
 	d1.insert(it, nr);
 }
 
-void PMergeMe::sortDequePairs() {
+void PmergeMe::sortDequePairs() {
 	std::deque<int> temp;
 	if (contLength % 2 == 1) {
 		hasOddNumber = true;
@@ -98,7 +98,7 @@ void PMergeMe::sortDequePairs() {
 	std::sort(d2.begin(), d2.end());
 }
 
-void PMergeMe::merge_vector()
+void PmergeMe::merge_vector()
 {
 	//std::cout << "***** VECTOR *****" << std::endl;
 	struct timeval start, end;
@@ -116,12 +116,12 @@ void PMergeMe::merge_vector()
 	hasOddNumber = false;
 }
 
-void PMergeMe::insertVectorNumber(int nr) {
+void PmergeMe::insertVectorNumber(int nr) {
 	std::vector<int>::iterator it = std::lower_bound(v1.begin(), v1.end(), nr);
 	v1.insert(it, nr);
 }
 
-void PMergeMe::sortVectorPairs() {
+void PmergeMe::sortVectorPairs() {
 	std::vector<int> temp;
 	if (contLength % 2 == 1) {
 		hasOddNumber = true;
@@ -143,7 +143,7 @@ void PMergeMe::sortVectorPairs() {
 	std::sort(v2.begin(), v2.end());
 }
 
-int PMergeMe::getNextIndex(int lastIndex, int maxIndex)const {
+int PmergeMe::getNextIndex(int lastIndex, int maxIndex)const {
 	if (lastIndex == 0)
 		return 1;
 	int lastJacobsthalNumber = 0;
@@ -166,7 +166,7 @@ int PMergeMe::getNextIndex(int lastIndex, int maxIndex)const {
 	return nextJacobsthalNumber;
 }
 
-int	PMergeMe::getJacobsthalNumber(int index) const { 
+int	PmergeMe::getJacobsthalNumber(int index) const { 
 	if (index == 0)
 		return 0;
 	if (index == 1)
@@ -174,7 +174,7 @@ int	PMergeMe::getJacobsthalNumber(int index) const {
 	return getJacobsthalNumber(index - 1) + 2 * getJacobsthalNumber(index - 2);
 }
 
-void PMergeMe::print_deque()
+void PmergeMe::print_deque()
 {
 	std::deque<int>::iterator it = d1.begin();
 	while (it != d1.end())
@@ -185,7 +185,7 @@ void PMergeMe::print_deque()
 	std::cout << std::endl;
 }
 
-void PMergeMe::print_vector()
+void PmergeMe::print_vector()
 {
 	std::vector<int>::iterator it = v1.begin();
 	while (it != v1.end())
@@ -196,17 +196,17 @@ void PMergeMe::print_vector()
 	std::cout << std::endl;
 }
 
-float PMergeMe::get_time_vector() const
+float PmergeMe::get_time_vector() const
 {
 	return time_vector;
 }
 
-float PMergeMe::get_time_deque() const
+float PmergeMe::get_time_deque() const
 {
 	return time_deque;
 }
 
-int PMergeMe::IsValidNumber(char *nr) const 
+int PmergeMe::IsValidNumber(char *nr) const 
 {
 	for (int i = 0; nr[i] != '\0'; i++) {
 		if (nr[i] < '0' || nr[i] > '9') {
@@ -216,7 +216,7 @@ int PMergeMe::IsValidNumber(char *nr) const
 	return 1;
 }
 
-const char *PMergeMe::IllegalCharacter::what() const throw()
+const char *PmergeMe::IllegalCharacter::what() const throw()
 {
 	return "Error";
 }

@@ -1,5 +1,5 @@
-NAME 			=	PMergeMe
-SRCS 			=	main.cpp PMergeMe.cpp
+NAME 			=	PmergeMe
+SRCS 			=	main.cpp PmergeMe.cpp
 OBJS 			=	$(SRCS:.cpp=.o)
 RM				=	rm -f
 FLAGS			=	-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g

@@ -10,14 +10,14 @@
 #include <sys/time.h>
 #include <limits>
 
-class PMergeMe
+class PmergeMe
 {
 	public:
-		PMergeMe();
-		PMergeMe(char *av[], int ac);
-		~PMergeMe();
-		PMergeMe(const PMergeMe &copy);
-		PMergeMe &operator=(const PMergeMe &copy);
+		PmergeMe();
+		PmergeMe(char *av[], int ac);
+		~PmergeMe();
+		PmergeMe(const PmergeMe &copy);
+		PmergeMe &operator=(const PmergeMe &copy);
 
 		void merge_vector();
 		void merge_deque();
