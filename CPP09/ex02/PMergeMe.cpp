@@ -63,7 +63,7 @@ void PMergeMe::merge_deque()
 	if (hasOddNumber)
 		insertDequeNumber(oddNumber);
 	gettimeofday(&end, NULL);
-	time_deque = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
+	time_deque = ((end.tv_sec - start.tv_sec) * 10000000) + (end.tv_usec - start.tv_usec) * 1e-4;
 	hasOddNumber = false;
 }
 
@@ -108,7 +108,7 @@ void PMergeMe::merge_vector()
 	if (hasOddNumber)
 		insertVectorNumber(oddNumber);
 	gettimeofday(&end, NULL);
-	time_vector = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
+	time_vector = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-4;
 	hasOddNumber = false;
 }
 
