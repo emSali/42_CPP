@@ -32,28 +32,30 @@ void	BitcoinExchange::fillPrices(std::string filename) {
 		throw BitcoinExchange::FileError();
 	while (std::getline(file, line)) {
 		key = line.substr(0, 10);
-		value = static_cast<float>(atof(line.c_str() + 11));
+		value = std::atof(line.c_str() + 11);
 		_prices[key] = value;
 	}
 	file.close();
 }
 
-#include <string> // Include the <string> header
-
 void BitcoinExchange::printValue(std::string filename) const {
 	std::ifstream file(filename.c_str());
 	std::string line;
+	int i = 0;
 
 	if (!file.is_open())
 		throw BitcoinExchange::FileError();
 	while (std::getline(file, line)) {
 		if (line.empty())
 			continue;
+		if (i++ == 0 && std::strcmp(line.c_str(), "date | value") == 0) 
+			continue;
 		try {
 			calcPrice(line);
 		} catch (std::exception& e) {
 			std::cout << e.what() << std::endl;
 		}
+		
 	}
 	file.close();
 }
@@ -78,7 +80,6 @@ void	BitcoinExchange::calcPrice(std::string line) const{
 	if (splitamount == NULL || splitamount[0] == '\0')
 		throw BitcoinExchange::WrongFormat(date);
 	amount = BitcoinExchange::getAmount(splitamount);
-
 	std::cout << date << " => " << amount << " = " << price * amount << std::endl;
 }
 
@@ -107,7 +108,7 @@ float	BitcoinExchange::getPrice(char * date) const {
 
 	// If the date is not found, but there is a lower date
 	if (it != _prices.begin()) {
-		--it;	// go to the value before, it being an initialize value. it's skipping all the days to go straight to the closest value.
+		--it;	// go to the value before, it being an initialize value.
 		return it->second;
 	}
 
