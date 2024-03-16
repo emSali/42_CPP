@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstring>
 #include <sstream>
 #include <limits>
 #include <exception>
@@ -36,6 +37,7 @@ class BitcoinExchange {
 		class WrongFormat: public std::exception {
 			public:
 				WrongFormat(const char * errorArea);
+				virtual ~WrongFormat() throw();
 				virtual const char * what() const throw();
 			private:
 				const char * _error;

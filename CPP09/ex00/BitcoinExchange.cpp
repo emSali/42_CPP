@@ -23,7 +23,7 @@ BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &assign) {
 }
 
 void	BitcoinExchange::fillPrices(std::string filename) {
-	std::ifstream	file(filename);
+	std::ifstream	file(filename.c_str(), std::ifstream::in);
 	std::string		line;
 	std::string		key;
 	float			value;
@@ -41,7 +41,7 @@ void	BitcoinExchange::fillPrices(std::string filename) {
 #include <string> // Include the <string> header
 
 void BitcoinExchange::printValue(std::string filename) const {
-	std::ifstream file(filename);
+	std::ifstream file(filename.c_str());
 	std::string line;
 
 	if (!file.is_open())
@@ -119,7 +119,7 @@ float BitcoinExchange::getAmount(char * amount) const {
 	float value;
 	
 	try {
-		value = std::stof(amount);
+		value = std::atof(amount);
 	} catch (std::exception &e) {
 		throw BitcoinExchange::WrongFormat(amount);
 	}
@@ -148,7 +148,10 @@ BitcoinExchange::WrongFormat::WrongFormat(const char * errorArea){
 	std::strcpy(tmp, message);
 	std::strcat(tmp, errorArea);
 	_error = tmp;
-	//(void) errorArea;
+}
+
+BitcoinExchange::WrongFormat::~WrongFormat() throw() {
+    delete[] _error; 
 }
 
 const char *BitcoinExchange::WrongFormat::what() const throw() {
