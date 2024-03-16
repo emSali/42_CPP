@@ -119,6 +119,8 @@ float	BitcoinExchange::getPrice(char * date) const {
 float BitcoinExchange::getAmount(char * amount) const {
 	float value;
 	
+	if (BitcoinExchange::isValidAmount(amount) == 0)
+		throw BitcoinExchange::WrongFormat(amount);
 	try {
 		value = std::atof(amount);
 	} catch (std::exception &e) {
@@ -129,6 +131,21 @@ float BitcoinExchange::getAmount(char * amount) const {
 	else if (value > 1000)
 		throw BitcoinExchange::TooLargeNumber();
 	return (value);
+}
+
+int BitcoinExchange::isValidAmount(char * nr) const
+{
+	int isDot = 0;
+	for (int i = 0; nr[i] != '\0'; i++) {
+		if (nr[i] == '.')
+			isDot++;
+		else if (nr[i] < '0' || nr[i] > '9') {
+			return 0;
+		}
+	}
+	if (isDot > 1)
+		return 0;
+	return 1;
 }
 
 const char *BitcoinExchange::FileError::what() const throw() {

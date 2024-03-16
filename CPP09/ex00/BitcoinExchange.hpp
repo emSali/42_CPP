@@ -48,6 +48,7 @@ class BitcoinExchange {
 		void	calcPrice(std::string line) const;
 		float	getPrice(char * date) const;
 		float	getAmount(char * amount) const;
+		int		isValidAmount(char * nr) const;
 
 
 		std::map<std::string, float> _prices;
