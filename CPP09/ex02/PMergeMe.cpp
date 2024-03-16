@@ -5,12 +5,14 @@ PMergeMe::PMergeMe()
 	contLength = 0;
 	time_vector = 0;
 	time_deque = 0;
+	hasOddNumber = false;
 }
 
 PMergeMe::PMergeMe(char *av[], int ac): contLength(ac - 1)
 {
 	time_vector = 0;
 	time_deque = 0;
+	hasOddNumber = false;
 	fill_containers(av, ac);
 }
 
@@ -55,11 +57,14 @@ void PMergeMe::merge_deque()
 	sortDequePairs();
 	int index = 0;
 	for (int i = 0; i < (int) d2.size(); i++) {
-		insertVectorNumber(d2[index]);
+		insertDequeNumber(d2[index]);
 		index = getNextIndex(index, d2.size() - 1);
 	}
+	if (hasOddNumber)
+		insertDequeNumber(oddNumber);
 	gettimeofday(&end, NULL);
-	time_vector = (end.tv_sec - start.tv_sec) * 1000.0;
+	time_deque = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
+	hasOddNumber = false;
 }
 
 void PMergeMe::insertDequeNumber(int nr) {
@@ -70,6 +75,7 @@ void PMergeMe::insertDequeNumber(int nr) {
 void PMergeMe::sortDequePairs() {
 	std::deque<int> temp;
 	if (contLength % 2 == 1) {
+		hasOddNumber = true;
 		oddNumber = d1[contLength - 1];
 		d1.pop_back();
 	}
@@ -99,8 +105,11 @@ void PMergeMe::merge_vector()
 		insertVectorNumber(v2[index]);
 		index = getNextIndex(index, v2.size() - 1);
 	}
+	if (hasOddNumber)
+		insertVectorNumber(oddNumber);
 	gettimeofday(&end, NULL);
 	time_vector = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
+	hasOddNumber = false;
 }
 
 void PMergeMe::insertVectorNumber(int nr) {
@@ -111,6 +120,7 @@ void PMergeMe::insertVectorNumber(int nr) {
 void PMergeMe::sortVectorPairs() {
 	std::vector<int> temp;
 	if (contLength % 2 == 1) {
+		hasOddNumber = true;
 		oddNumber = v1[contLength - 1];
 		v1.pop_back();
 	}
@@ -129,28 +139,6 @@ void PMergeMe::sortVectorPairs() {
 	std::sort(v2.begin(), v2.end());
 }
 
-void PMergeMe::print_deque(std::deque<int> d)
-{
-	std::deque<int>::iterator it = d.begin();
-	while (it != d.end())
-	{
-		std::cout << *it << " ";
-		it++;
-	}
-	std::cout << std::endl;
-}
-
-void PMergeMe::print_vector(std::vector<int> v)
-{
-	std::vector<int>::iterator it = v.begin();
-	while (it != v.end())
-	{
-		std::cout << *it << " ";
-		it++;
-	}
-	std::cout << std::endl;
-}
-
 int PMergeMe::getNextIndex(int lastIndex, int maxIndex) {
 	if (lastIndex == 0)
 		return 1;
@@ -162,19 +150,10 @@ int PMergeMe::getNextIndex(int lastIndex, int maxIndex) {
 		lastJacobsthalNumber = nextJacobsthalNumber;
 		nextJacobsthalNumber = getJacobsthalNumber(i);
 	}
-	//std::cout << "index: " << lastIndex << ", lastJacob: " << lastJacobsthalNumber << ", nextJacob...: " << nextJacobsthalNumber << std::endl;
-	// if ((lastJacobsthalNumber + 1) == lastIndex && lastIndex < maxIndex)
-	// 	return nextJacobsthalNumber;
-	// else if ((lastJacobsthalNumber + 1) == lastIndex)
-	// 	return maxIndex;
-	// return (lastIndex - 1);
-
 	if (nextJacobsthalNumber - lastJacobsthalNumber > 1 && lastIndex > (lastJacobsthalNumber + 1)) {
 	 	return lastIndex - 1;
-		//std::cout << "returned here " << std::endl;
 	}
 	nextJacobsthalNumber = getJacobsthalNumber(++i);
-	//std::cout << "nextjacob... " << nextJacobsthalNumber << std::endl;
 	if (nextJacobsthalNumber == lastIndex)
 		nextJacobsthalNumber = getJacobsthalNumber(++i);
 	if (nextJacobsthalNumber > maxIndex) {
@@ -189,6 +168,28 @@ int	PMergeMe::getJacobsthalNumber(int index) {
 	if (index == 1)
 		return 1;
 	return getJacobsthalNumber(index - 1) + 2 * getJacobsthalNumber(index - 2);
+}
+
+void PMergeMe::print_deque()
+{
+	std::deque<int>::iterator it = d1.begin();
+	while (it != d1.end())
+	{
+		std::cout << *it << " ";
+		it++;
+	}
+	std::cout << std::endl;
+}
+
+void PMergeMe::print_vector()
+{
+	std::vector<int>::iterator it = v1.begin();
+	while (it != v1.end())
+	{
+		std::cout << *it << " ";
+		it++;
+	}
+	std::cout << std::endl;
 }
 
 float PMergeMe::get_time_vector()

@@ -20,8 +20,8 @@ class PMergeMe
 
 		void merge_vector();
 		void merge_deque();
-		void print_deque(std::deque<int> d);
-		void print_vector(std::vector<int> v);
+		void print_deque();
+		void print_vector();
 		float get_time_vector();
 		float get_time_deque();
 
@@ -29,17 +29,16 @@ class PMergeMe
 			virtual const char * what() const throw();
 		};
 
-		// TODO!!! PUT PRIVATE
+	private:
 		std::vector<int> v1;
 		std::deque<int> d2;
-
-	private:
 		std::vector<int> v2;
 		std::deque<int> d1;
 		int contLength;
 		float time_vector;
 		float time_deque;
 		int	oddNumber;
+		bool hasOddNumber;
 
 		void sortVectorPairs();
 		void sortDequePairs();
@@ -48,8 +47,6 @@ class PMergeMe
 		void fill_containers(char *av[], int ac);
 		int getNextIndex(int index, int maxIndex);
 		int getJacobsthalNumber(int index);
-
-
 };
 
 
