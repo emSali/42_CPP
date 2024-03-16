@@ -8,6 +8,7 @@
 #include <iterator>
 #include <string>
 #include <sys/time.h>
+#include <limits>
 
 class PMergeMe
 {
@@ -22,10 +23,14 @@ class PMergeMe
 		void merge_deque();
 		void print_deque();
 		void print_vector();
-		float get_time_vector();
-		float get_time_deque();
+		float get_time_vector() const;
+		float get_time_deque() const;
 
 		class IllegalCharacter: public std::exception {
+			virtual const char * what() const throw();
+		};
+
+		class NegativeNumber: public std::exception {
 			virtual const char * what() const throw();
 		};
 
@@ -45,8 +50,9 @@ class PMergeMe
 		void insertVectorNumber(int nr);
 		void insertDequeNumber(int nr);
 		void fill_containers(char *av[], int ac);
-		int getNextIndex(int index, int maxIndex);
-		int getJacobsthalNumber(int index);
+		int getNextIndex(int index, int maxIndex) const;
+		int getJacobsthalNumber(int index) const;
+		int IsValidNumber(char * nr) const;
 };
 
 

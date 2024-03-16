@@ -2,6 +2,8 @@
 
 int main(int ac, char **av)
 {
+	if (ac == 1)
+		return 0;
     try {
         PMergeMe pmm(av, ac);
 		std::cout << "Before: ";

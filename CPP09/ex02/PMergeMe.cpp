@@ -39,12 +39,16 @@ PMergeMe &PMergeMe::operator=(const PMergeMe &copy)
 void PMergeMe::fill_containers(char *av[], int ac)
 {
 	int i = 1;
+	char *endptr;
 	while (i < ac)
-	{
-		v1.push_back(std::atoi(av[i]));
-		d1.push_back(std::atoi(av[i]));
-		if (v1.back() == 0 && !(av[i][0] == '0' && av[i][1] == '\0'))
+	{	
+		if (!IsValidNumber(av[i]) )
 			throw PMergeMe::IllegalCharacter();
+		long int nr = std::strtol(av[i], &endptr, 10);
+		if (*endptr != '\0' || nr > std::numeric_limits<int>::max())
+			throw PMergeMe::IllegalCharacter();
+		v1.push_back(nr);
+		d1.push_back(nr);
 		i++;
 	}
 }
@@ -139,7 +143,7 @@ void PMergeMe::sortVectorPairs() {
 	std::sort(v2.begin(), v2.end());
 }
 
-int PMergeMe::getNextIndex(int lastIndex, int maxIndex) {
+int PMergeMe::getNextIndex(int lastIndex, int maxIndex)const {
 	if (lastIndex == 0)
 		return 1;
 	int lastJacobsthalNumber = 0;
@@ -162,7 +166,7 @@ int PMergeMe::getNextIndex(int lastIndex, int maxIndex) {
 	return nextJacobsthalNumber;
 }
 
-int	PMergeMe::getJacobsthalNumber(int index) {
+int	PMergeMe::getJacobsthalNumber(int index) const { 
 	if (index == 0)
 		return 0;
 	if (index == 1)
@@ -192,17 +196,28 @@ void PMergeMe::print_vector()
 	std::cout << std::endl;
 }
 
-float PMergeMe::get_time_vector()
+float PMergeMe::get_time_vector() const
 {
 	return time_vector;
 }
 
-float PMergeMe::get_time_deque()
+float PMergeMe::get_time_deque() const
 {
 	return time_deque;
 }
 
+int PMergeMe::IsValidNumber(char *nr) const 
+{
+	for (int i = 0; nr[i] != '\0'; i++) {
+		if (nr[i] < '0' || nr[i] > '9') {
+			return 0;
+		}
+	}
+	return 1;
+}
+
 const char *PMergeMe::IllegalCharacter::what() const throw()
 {
-	return "Error: Illegal argument";
+	return "Error";
 }
+
